@@ -7,9 +7,31 @@
 //
 
 #include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+int main(void) {
+    freopen("/Users/deok9/desktop/input.txt","r",stdin);
+    
+    int tCase=0,input,max=0;
+    cin>>tCase;
+    vector<vector<int>> v;
+    vector<int> temp;
+    
+    for(int i=0;i<tCase;i++){
+        cin>>input;
+        temp.emplace_back(input);
+        temp.emplace_back(i);
+        v.emplace_back(temp);
+        temp.clear();
+    }
+    sort(v.begin(),v.end());
+    for(int i=0;i<tCase;i++){
+        if(v[i][1]-i>max)
+            max = v[i][1]-i;
+    }
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    cout<<max+1<<'\n';
+    
     return 0;
 }
